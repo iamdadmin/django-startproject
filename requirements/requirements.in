@@ -1,8 +1,12 @@
 django-click
-Django<5.0
+Django>=4.2.7
 environs[django]
 psycopg2-binary
 whitenoise
+django-vite>=2.1.3
+inertia-django>=0.5.3
+django-allauth>=0.58.2
+python3-saml
 
 django-test-plus
 model-bakery
