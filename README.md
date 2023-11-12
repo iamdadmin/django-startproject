@@ -96,8 +96,6 @@ $ docker compose run --rm web pip-compile requirements/requirements.in
 
 ## :wrench: C
 
-```shell
-
 
 ## This is a fork of [django-startproject](https://github.com/jefftriplett/django-startproject) by [Jeff Triplett](https://github.com/jefftriplett)
 

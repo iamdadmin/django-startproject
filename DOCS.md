@@ -83,13 +83,30 @@ CSRF_HEADER_NAME = 'HTTP_X_XSRF_TOKEN'
 CSRF_COOKIE_NAME = 'XSRF-TOKEN'
 ```
 
+## Configure vite
+
+Referring to the documentation for django-vite: https://github.com/MrBin99/django-vite
+
+```shell
+## django-vite settings ##
+# Set vite to follow Django's dev mode
+DJANGO_VITE_DEV_MODE = DEBUG  
+# Set the *ABSOLUTE* path to the static JS assets
+DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static" / "js"  ###### YOU ARE HERE ######
+
+# If use HMR or not. We follow Django's DEBUG mode
+DJANGO_VITE_DEV_MODE = DEBUG
+
+# Vite 3 defaults to 5173. Default for django-vite is 3000, which is the default for Vite 2.
+DJANGO_VITE_DEV_SERVER_PORT = 5173
+```
+
 ## Note if you're using Whitenoise to serve static files
 
 Explanation available here: http://whitenoise.evans.io/en/stable/django.html#WHITENOISE_IMMUTABLE_FILE_TEST
 
 Add the following to the end of your `project/settings.py` file.
-```
-python
+```python
 # Vite generates files with 8 hash digits
 # http://whitenoise.evans.io/en/stable/django.html#WHITENOISE_IMMUTABLE_FILE_TEST
 def immutable_file_test(_, url):
@@ -97,13 +114,12 @@ def immutable_file_test(_, url):
     # e.g. main.db8f2edc0c8a.js
     return re.match(r"^.+\.[0-9a-f]{8,12}\..+$", url)
 
-
 WHITENOISE_IMMUTABLE_FILE_TEST = immutable_file_test
 ```
 
 ## Root template
 
-Next, setup the root template that will be loaded on the first page visit to your application. This will be used to load your site assets (CSS and JavaScript), and will also contain a root <div> in which to boot your JavaScript application.
+Next, setup the root template that will be loaded on the first page visit to your application. This will be used to load your site assets (CSS and JavaScript), and will also contain a root `<div>` in which to boot your JavaScript application.
 
 In our case, this goes into your templates/base.html file.
 
