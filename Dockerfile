@@ -2,7 +2,7 @@
 # Base/builder layer
 # ------------------------------------------------------------
 
-FROM python:3.10-slim-buster AS builder
+FROM python:3.12-slim AS builder
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
