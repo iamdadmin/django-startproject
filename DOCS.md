@@ -1,4 +1,4 @@
-# Introduction
+# Introduction (from https://inertiajs.com/)
 
 Inertia is a new approach to building classic server-driven web apps. We call it the modern monolith.
 
@@ -91,13 +91,9 @@ Referring to the documentation for django-vite: https://github.com/MrBin99/djang
 ## django-vite settings ##
 # Set vite to follow Django's dev mode
 DJANGO_VITE_DEV_MODE = DEBUG  
-# Set the *ABSOLUTE* path to the static JS assets
-DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static" / "js"  ###### YOU ARE HERE ######
-
-# If use HMR or not. We follow Django's DEBUG mode
-DJANGO_VITE_DEV_MODE = DEBUG
-
-# Vite 3 defaults to 5173. Default for django-vite is 3000, which is the default for Vite 2.
+# Set the *ABSOLUTE* path to the static JS assets AFTER they have been compiled with vite
+DJANGO_VITE_ASSETS_PATH = BASE_DIR / "static" / "js" / "dist"
+# Vite 3 defaults to 5173. Default for django-vite is 3000, which is the default for Vite 2, so override it to 5173.
 DJANGO_VITE_DEV_SERVER_PORT = 5173
 ```
 
